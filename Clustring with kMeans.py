@@ -6,8 +6,8 @@ from scipy.spatial import Voronoi, voronoi_plot_2d
 import pandas as pd
 import os
 
-""" plt.style.use("seaborn-whitegrid")
-plt.rc("figure", autolayout=True)
+#plt.style.available .use("Solarize_Light2")
+""" plt.rc("figure", autolayout=True)
 plt.rc(
     "axes",
     labelweight="bold",
@@ -18,18 +18,19 @@ plt.rc(
 )
  """
 data_path="./MopsiLocationsUntil2012-Finland.txt"
-assert os.path.isfile(data_path), "File not found? An Exception"
-df=pd.read_csv(data_path,sep = "\t",names=["Latitude", "Longitude"])
-X = df.loc[:, ["Latitude", "Longitude"]]
-X.head()
 
-""" 
+assert os.path.isfile(data_path), "File not found? An Exception"
+X=pd.read_csv(data_path,sep = "\t",names=["Latitude", "Longitude"])
+X=np.loadtxt(data_path,delimiter = "\t")
+print(X)
+
 # Set up K-Means clustering with a fixed start and stop at 3 clusters
-kmeans = KMeans(n_clusters=5, random_state=0).fit(x)
+kmeans = KMeans(n_clusters=5, random_state=0).fit(X)
+
 
 # Plot the data
 sns.set_style("darkgrid")
-plt.scatter(x[:, 0], x[:, 1], c=kmeans.labels_, cmap=plt.get_cmap("winter"))
+plt.scatter(X[:, 0], X[:, 1], c=kmeans.labels_, cmap=plt.get_cmap("winter"))
 
 # Save the axes limits of the current figure
 x_axis = plt.gca().get_xlim()
@@ -50,4 +51,9 @@ plt.xticks([])
 plt.yticks([])
 
 plt.tight_layout()
-plt.show() """
+plt.show()
+
+""" sns.relplot(
+    x="Longitude", y="Latitude", hue="Cluster", data=X, height=6,
+);
+ """
