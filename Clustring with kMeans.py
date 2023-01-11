@@ -5,7 +5,7 @@ from sklearn.cluster import KMeans
 from scipy.spatial import Voronoi, voronoi_plot_2d
 
 # This data set represents a toy manufacturer's product data
-#
+# dataset sample from GeeksforGeeks
 # The first value in the pair represents a toy:
 #    0-2: Action Figures
 #    3-5: Building Blocks

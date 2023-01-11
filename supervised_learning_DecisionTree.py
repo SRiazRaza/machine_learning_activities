@@ -1,3 +1,34 @@
+""" 
+Prereq: graphviz (https://graphviz.org/download/)
+The data and Output:
+Training Data:
+---------------------------------------------------------
+day  | supplies  | weather   | worked?   | went shopping?
+---------------------------------------------------------
+1    | low       | sunny     | yes       | yes       
+2    | high      | sunny     | yes       | no        
+3    | med       | cloudy    | yes       | no        
+4    | low       | raining   | yes       | no        
+5    | low       | cloudy    | no        | yes       
+6    | high      | sunny     | no        | no        
+7    | high      | raining   | no        | no
+8    | med       | cloudy    | yes       | no
+9    | low       | raining   | yes       | no
+10   | low       | raining   | no        | yes
+11   | med       | sunny     | no        | yes
+12   | high      | sunny     | yes       | no
+
+Predicted Random Results:
+---------------------------------------------------------
+day  | supplies  | weather   | worked?   | went shopping?
+---------------------------------------------------------
+1    | low       | sunny     | no        | yes
+2    | med       | sunny     | no        | yes
+3    | low       | sunny     | yes       | yes
+4    | high      | raining   | no        | no
+5    | med       | raining   | yes       | no
+  """
+
 import graphviz
 import itertools
 import random
@@ -11,7 +42,7 @@ classes = {
     'worked?':['yes','no']
 }
 
-# Our example data from the documentation
+# Our example data
 data = [
     ['low',  'sunny',   'yes'],
     ['high', 'sunny',   'yes'],
@@ -27,11 +58,11 @@ data = [
     ['high', 'sunny',   'yes']
 ]
 
-# Our target variable, whether someone went shopping
+# Our target variable, whether someone went shopping, Corelate with data
 target = ['yes', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no']
 
 # Scikit learn can't handle categorical data, so form numeric representations of the above data
-# Categorical data support may be added in the future: https://github.com/scikit-learn/scikit-learn/pull/4899
+
 categories = [classes['supplies'], classes['weather'], classes['worked?']]
 encoder = OneHotEncoder(categories=categories)
 
@@ -82,7 +113,7 @@ feature_names = (
 # Note that sklearn is unable to generate non-binary trees, so these are based on individual options in each class
 dot_data = export_graphviz(tree, filled=True, proportion=True, feature_names=feature_names) 
 graph = graphviz.Source(dot_data)
-graph.render(filename='decision_tree', cleanup=True, view=True)
+graph.render(filename='supervised_learning_DecisionTree', cleanup=True, view=True)
 
 # Display out training and prediction data and results
 print("Training Data:")
