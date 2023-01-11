@@ -62,8 +62,7 @@ data = [
 # Our target variable, whether someone went shopping, Corelate with data
 target = ['yes', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no']
 
-# Scikit learn can't handle categorical data, so form numeric representations of the above data
-
+# Scikit learn can't handle categorical data, so form numeric representations of the above data using OneHotEncoder
 categories = [classes['supplies'], classes['weather'], classes['worked?']]
 encoder = OneHotEncoder(categories=categories)
 
