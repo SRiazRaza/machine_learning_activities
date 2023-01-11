@@ -6,7 +6,7 @@ from scipy.spatial import Voronoi, voronoi_plot_2d
 import pandas as pd
 import os
 
-#plt.style.available .use("Solarize_Light2")
+
 """ plt.rc("figure", autolayout=True)
 plt.rc(
     "axes",
