@@ -1,7 +1,8 @@
 """ 
+We exported the tree in Graphviz format using the export_graphviz exporter.
 Prereq: graphviz (https://graphviz.org/download/)
+The goal of a decision tree is to try to understand why a guy goes to the store, and apply that to new data later on.
 The data and Output:
-Training Data:
 ---------------------------------------------------------
 day  | supplies  | weather   | worked?   | went shopping?
 ---------------------------------------------------------
